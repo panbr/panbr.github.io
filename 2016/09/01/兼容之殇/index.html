@@ -1,0 +1,226 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>兼容之殇 | panbr</title>
+  <meta name="author" content="panbr">
+  
+  <meta name="description" content="接着上一篇的话题，第一次浏览器大战以微软胜利收场，IE通过捆绑在Windows平台拥有巨大的用户群，一度占据百分之九十几的市场份额。然而总有人不服，网景算是一个，竞争失利后无奈将Netscape浏览器开源，意图在于吸引来大量的开发者完善软件，并且成立了非正式组织Mozilla，从此Mozilla登上了历史舞台。">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="兼容之殇"/>
+  <meta property="og:site_name" content="panbr"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="panbr" type="application/atom+xml">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+<link rel="stylesheet" href="/css/style.css">
+  <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+<body>
+  <header id="header" class='normal_mode'>
+    <nav id="main-nav">
+  <div class='container'>
+      <h4 class="logo pull-left"><a href="/">Sweet House</a></h4>
+	  <ul>
+	    
+	      <li><a href="/">Home</a></li>
+	    
+	      <li><a href="/archives">Archives</a></li>
+	    
+	  </ul>
+  </div>
+  <div class="clearfix"></div>
+</nav>
+  </header>
+  <div id="content" class="container">
+    <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+      <time datetime="2016-09-01T15:56:37.000Z"><a href="/2016/09/01/兼容之殇/">周四, 9月 1 2016, 11:56:37 晚上</a></time>
+
+  
+    <h3 class="title">兼容之殇</h3>
+  
+
+
+
+  
+  <div class="tags">
+  	<i class="fa fa-tag"></i>
+    <a href="/tags/扯/">扯</a>
+  </div>
+
+<div class="clear"></div>
+      
+    </header>
+    <div class="entry">
+      
+        <p>接着上一篇的话题，第一次浏览器大战以微软胜利收场，IE通过捆绑在Windows平台拥有巨大的用户群，一度占据百分之九十几的市场份额。<strong>然而总有人不服</strong>，网景算是一个，竞争失利后无奈将Netscape浏览器开源，意图在于吸引来大量的开发者完善软件，并且成立了非正式组织Mozilla，从此Mozilla登上了历史舞台。<a id="more"></a>该组织独立运作来负责Mozilla Application Suite的研发。这一时期网景放弃了绿色蜥蜴的造型，开始使用一只凶猛的、线条粗犷的、红色的、类似霸王龙的形象，明显可以看出反攻的意图。这一时期还出现了另一款浏览器——Opera，快速小巧十分好用，并且支持W3C协议（这个后面再说）。</p>
+<p>然而并没有卵用。IE凭借巨大的平台优势，牢牢地坐稳浏览器老大的宝座，不仅如此，IE自设计之初就问题百出，到了IE6-IE8几乎没有什么更新。这样导致的结果是大大的影响了HTML,CSS以及javascript的发展。早在94年，由Tim Berner-Lee和几家资助的公司就创建了W3C理事会，该组织旨在规范网页标记语言，促进WEB技术的兼容和发展。而此时不可一世的IE根本不理会W3C的标准，对新的WEB协议很多都不支持，这样使得WEB开发者直到今天仍然需要写一堆的额外代码，仅仅是为了兼容IE浏览器。</p>
+<p>比如这样</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;!–[if lt IE 7]&gt;</div><div class="line">&lt;script src=”http://ie7-js.googlecode.com/svn/version/2.0(beta)/IE7.js” type=”text/javascript”&gt;&lt;/script&gt;</div><div class="line">&lt;![endif]–&gt;</div></pre></td></tr></table></figure>
+<p>还有这样</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta http-equiv=“X-UA-Compatible” content=“chrome=1″ /&gt;</div></pre></td></tr></table></figure>
+<p>这些丑陋繁杂的代码仅仅是为了解决IE的兼容性。以上的历史遗留问题延续至今，好在近几年微软在市场竞争中更加开放，IE10、11逐步跟上最近技术的步伐，WIN10起更是巨大的变革，新版的浏览器摒弃了IE改称Edge，也许这也是微软对浏览器一次自我的蜕变。从近年浏览的发展来看，谁对用户更友好，对技术更依赖，对开发者更有利，谁就将占据市场的主动。</p>
+
+      
+    </div>
+    <footer>
+      
+          
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style pull-right">
+	<span class="jiathis_txt">分享到：</span>
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_tqq"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+
+          <div class="clearfix"></div>
+          <nav id="pagination">
+  
+    <a href="/2016/09/04/G20杭州峰会logo/" class="alignleft prev"><i class="fa fa-long-arrow-left"></i>Next</a>
+  
+  
+    <a href="/2016/08/30/第一次浏览器大战/" class="alignright next">Prev<i class="fa fa-long-arrow-right"></i></a>
+  
+  <div class="clearfix"></div>
+</nav>
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">留言</h1>
+
+  
+      <!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread" data-thread-key="/2016/09/01/兼容之殇/"></div>
+<!-- Duoshuo Comment END -->
+  
+</section>
+
+
+
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div>
+  
+  &copy; 2016 panbr
+  
+</div>
+Powered by <a href="https://hexo.io/" title="Hexo" target="_blank" rel="external">Hexo</a>
+
+<div class="clearfix"></div></footer>
+  
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+
+
+
+    <script type="text/javascript">
+        (function(){
+
+            $(window).scroll(function(){
+
+                var scrollTop = $(window).scrollTop();
+                if ( scrollTop >200 ){
+                    $("#main-nav").removeClass('normal_mode').addClass('top_mode');
+                } else{
+                    $("#main-nav").removeClass('top_mode').addClass('normal_mode');
+                }
+
+            });
+
+        })();
+    </script>
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox({
+      'titlePosition': 'inside'
+    });
+  })(jQuery);
+  </script>
+
+
+
+    
+    <script type="text/javascript">
+      var duoshuoQuery = {short_name:"panbr"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = 'http://static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0] 
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+
+
+<script type="text/javascript">
+  
+  $(function(){
+
+    $('.title').hover(
+      function() {      
+        $(this).stop().animate(
+          {'marginLeft': '10px'}, 200
+        );   
+      }, 
+      function() {       
+        $(this).stop().animate({'marginLeft': '0px'}, 200);      
+      
+    });   
+
+  });
+
+</script>
+
+
+</body>
+</html>
