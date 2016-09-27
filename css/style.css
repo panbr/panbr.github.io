@@ -707,10 +707,7 @@ article:last-child {
   display: inline-block;
 }
 #footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  position: relative;
   color: #777;
   padding-top: 10px;
   padding-bottom: 5px;
