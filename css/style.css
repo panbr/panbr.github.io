@@ -97,9 +97,15 @@ p {
   color: #258fb8;
   text-decoration: none;
 }
+#content {
+  min-height: 100%;
+  padding-top: 44px;
+  padding-bottom: 65px;
+}
 #header {
   text-shadow: 0 0 1px #fff;
   margin-top: 0px;
+  margin-bottom: -44px;
 }
 #header a {
   color: #999;
@@ -713,7 +719,7 @@ article:last-child {
   padding-bottom: 5px;
   font: 0.9em/1.6 "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
   text-shadow: 0 0 1px #fff;
-  margin-top: 10px;
+  margin-top: -55px;
   text-align: center;
   background: url("http://p1.bpimg.com/575157/3b0f56e22859db74.gif") #fff no-repeat bottom center;
 }
