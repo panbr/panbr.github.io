@@ -1,0 +1,268 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>node简单的爬虫 | panbr</title>
+  <meta name="author" content="panbr">
+  
+  <meta name="description" content="最近学习nodejs，做一个爬虫玩玩。不知深浅爬了segmentfault，希望站长大大不要封我的IP，只是做练习用用，同时也表达对贵社区的喜爱和敬重。">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="node简单的爬虫"/>
+  <meta property="og:site_name" content="panbr"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="panbr" type="application/atom+xml">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+<link rel="stylesheet" href="/css/style.css">
+  <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+<body>
+  <header id="header" class='normal_mode'>
+    <nav id="main-nav">
+  <div class='container'>
+      <h4 class="logo pull-left"><a href="/">Sweet House</a></h4>
+	  <ul>
+	    
+	      <li><a href="/">Home</a></li>
+	    
+	      <li><a href="/archives">Archives</a></li>
+	    
+	  </ul>
+  </div>
+  <div class="clearfix"></div>
+</nav>
+  </header>
+  <div id="content" class="container">
+    <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+      <time datetime="2016-09-26T15:39:46.000Z"><a href="/2016/09/26/node简单的爬虫/">周一, 9月 26 2016, 11:39:46 晚上</a></time>
+
+  
+    <h3 class="title">node简单的爬虫</h3>
+  
+
+
+
+  
+  <div class="tags">
+  	<i class="fa fa-tag"></i>
+    <a href="/tags/前端/">前端</a>
+  </div>
+
+<div class="clear"></div>
+      
+    </header>
+    <div class="entry">
+      
+        <p>最近学习nodejs，做一个爬虫玩玩。不知深浅爬了segmentfault，希望站长大大不要封我的IP，只是做练习用用，同时也表达对贵社区的喜爱和敬重。<br><a id="more"></a></p>
+<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ol>
+<li>目标网站：<a href="https://segmentfault.com" target="_blank" rel="external">https://segmentfault.com</a></li>
+<li>分别进入每个主题，取得问题的题目、提问者、回答数，并打印。</li>
+</ol>
+<h4 id="输出示例"><a href="#输出示例" class="headerlink" title="输出示例:"></a>输出示例:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">  &#123;</div><div class="line">    &quot;title&quot;: &quot;python 是否存在限制 key 的 dict&quot;,</div><div class="line">    &quot;author&quot;: &quot;caimaoy&quot;,</div><div class="line">    &quot;answer&quot;: &quot;2个回答&quot;</div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    &quot;title&quot;: &quot;vue.js 主页面组件替换或跳转&quot;,</div><div class="line">    &quot;author&quot;: &quot;yulingsong&quot;,</div><div class="line">    &quot;answer&quot;: &quot;2个回答&quot;</div><div class="line">  &#125;</div><div class="line">]</div></pre></td></tr></table></figure>
+<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><ul>
+<li>安装 node 依赖包；</li>
+<li>使用 superagent 抓取网页；</li>
+<li>使用 cheerio 分析网页；</li>
+<li>使用 eventproxy 控制异步回调；</li>
+<li>使用 async 控制并发。</li>
+</ul>
+<h2 id="主要库的介绍"><a href="#主要库的介绍" class="headerlink" title="主要库的介绍"></a>主要库的介绍</h2><ul>
+<li><p>superagent<br>superagent(<a href="http://visionmedia.github.io/superagent/" target="_blank" rel="external">http://visionmedia.github.io/superagent/</a>) 是个 http 方面的库，轻量灵活而且简单易用。与 JQuery 的 ajax 类似，可以发起 get 或 post 请求。简单的用法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">request</div><div class="line">   .get(url)</div><div class="line">   .end(function(err, res)&#123;</div><div class="line">       // TODO </div><div class="line">   &#125;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>cheerio<br>cheerio(<a href="https://github.com/cheeriojs/cheerio" target="_blank" rel="external">https://github.com/cheeriojs/cheerio</a>) 可以理解成一个 Node.js 版的 jquery，用来从网页中以 css selector 取数据，使用方式跟 jquery 一样一样的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">let cheerio = require(&apos;cheerio&apos;)</div><div class="line">let $ = cheerio.load(&apos;&lt;h2 class=&quot;title&quot;&gt;Hello world&lt;/h2&gt;&apos;)</div><div class="line"></div><div class="line">$(&apos;h2.title&apos;).text(&apos;Hello there!&apos;)</div><div class="line">$(&apos;h2&apos;).addClass(&apos;welcome&apos;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>EventProxy<br>EventProxy 利用事件机制解耦复杂业务逻辑，移除被广为诟病的深度callback嵌套问题，将串行等待变成并行等待，提升多异步协作场景下的执行效率。<br>过去的，深度嵌套的，串行的长这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var render = function (template, data) &#123;</div><div class="line">  _.template(template, data);</div><div class="line">&#125;;</div><div class="line">$.get(&quot;template&quot;, function (template) &#123;</div><div class="line">  // something</div><div class="line">  $.get(&quot;data&quot;, function (data) &#123;</div><div class="line">    // something</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>现在，无深度嵌套的，并行的长这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var ep = EventProxy.create(&quot;template&quot;, &quot;data&quot;, &quot;l10n&quot;, function (template, data, l10n) &#123;</div><div class="line">    _.template(template, data, l10n);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">$.get(&quot;template&quot;, function (template) &#123;</div><div class="line">    // something</div><div class="line">    ep.emit(&quot;template&quot;, template);</div><div class="line">&#125;);</div><div class="line">$.get(&quot;data&quot;, function (data) &#123;</div><div class="line">    // something</div><div class="line">    ep.emit(&quot;data&quot;, data);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<ul>
+<li>async<br>async (<a href="http://caolan.github.io/async/" target="_blank" rel="external">http://caolan.github.io/async/</a>) 可以用来控制并发连接数。为什么要控制并发数呢？我们在写爬虫的时候，如果有 1000 个链接要去爬，那么不可能同时发出 1000 个并发链接出去（站长可能会以为你是恶意攻击…）。我们需要控制一下并发的数量，比如并发 10 个就好，然后慢慢抓完这 1000 个链接。这里主要用mapLimit这个方法，例如：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">async.mapLimit(urls, 10, function (url, callback) &#123;</div><div class="line">  // fetchData(url, callback);</div><div class="line">&#125;, function (err, result) &#123;</div><div class="line">  // handle err</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="实现大致过程"><a href="#实现大致过程" class="headerlink" title="实现大致过程"></a>实现大致过程</h2><ul>
+<li><p>安装依赖</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm init</div><div class="line">npm install MODULES --save</div></pre></td></tr></table></figure>
+</li>
+<li><p>引入类库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var eventproxy = require(&apos;eventproxy&apos;);</div><div class="line">var superagent = require(&apos;superagent&apos;);</div><div class="line">var cheerio = require(&apos;cheerio&apos;);</div><div class="line">var async = require(&quot;async&quot;);</div></pre></td></tr></table></figure>
+</li>
+<li><p>取得主题所有url，并且注册到eventproxy中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">superagent.get(url).end(function(err, sres) &#123;</div><div class="line">    if(err) &#123;</div><div class="line">        return next(err);</div><div class="line">    &#125;</div><div class="line">    var $ = cheerio.load(sres.text);</div><div class="line">    $(element).each(function(idx, element) &#123;</div><div class="line">        // save urls</div><div class="line">    &#125;)</div><div class="line">    ep.emit(&apos;topic_html&apos;, urls); // 交给eventproxy统一处理</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>EventProxy控制异步结束，进入每一个主题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ep.after(&apos;topic_html&apos;, pageUrls.length, function(topics) &#123;</div><div class="line">    // fetchTopics</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>async控制最大并发数，在结果中取出callback返回来的整个结果数组。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">async.mapLimit(topicUrls, 5, function (myurl, callback) &#123;</div><div class="line">    fetchUrl(myurl, callback);</div><div class="line">&#125;, function (err, result) &#123;</div><div class="line">    console.log(result);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>至此，主要工作都完成了，看看输出结果：</p>
+<p><img src="http://p1.bpimg.com/575157/0504d2df35f19581.png" alt=""></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>异步编程是nodejs的一大特点，也是容易让人晕头转向的地方，利用EventProxy很好的解决了异步回调深度嵌套的问题；另外，发现cheerio是个好东西啊，对于习惯使用jquery的同学来说简直不能再好。虽然明白爬别人的东西是不好的，但是合理的发掘并整理资源，最大限度的方便自己查阅和学习，也是很酷的。</p>
+<h2 id="附件（源代码）"><a href="#附件（源代码）" class="headerlink" title="附件（源代码）"></a>附件（源代码）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div></pre></td><td class="code"><pre><div class="line">var eventproxy = require(&apos;eventproxy&apos;);</div><div class="line">var superagent = require(&apos;superagent&apos;);</div><div class="line">var cheerio = require(&apos;cheerio&apos;);</div><div class="line">var async = require(&quot;async&quot;);</div><div class="line"></div><div class="line">var ep = new eventproxy();</div><div class="line"></div><div class="line">var url = require(&quot;url&quot;); // url 模块是nodejs里面的</div><div class="line">var baseUrl = &quot;https://segmentfault.com/questions&quot;;</div><div class="line"></div><div class="line">// 存放所有主题链接链接</div><div class="line">var topicUrls = [];</div><div class="line">var pageUrls = [];</div><div class="line">// 爬前两页的问题</div><div class="line">for (var i=1; i&lt;3; i++) &#123;</div><div class="line">    pageUrls.push(baseUrl + &apos;?&amp;page=&apos; + i);</div><div class="line">&#125;</div><div class="line">/**</div><div class="line"> * 所有的url请求完成后，ep控制异步结束，进入每一个主题</div><div class="line"> */</div><div class="line">ep.after(&apos;topic_html&apos;, pageUrls.length, function(topics) &#123;</div><div class="line"></div><div class="line">  var concurrencyCount = 0;  // 记录并发数</div><div class="line"></div><div class="line">  /**</div><div class="line">   * 进入主题，取得题目、作者、回答数</div><div class="line">   * @callback topics [&#123;title:&apos;&apos;, author:&apos;&apos;, answer:&apos;&apos;&#125;]</div><div class="line">   */</div><div class="line">  var fetchUrl = function(myurl, callback) &#123;</div><div class="line">    var fetchStart = new Date().getTime();</div><div class="line">        concurrencyCount++;</div><div class="line">        console.log(&apos;现在的并发数是&apos;, concurrencyCount, &apos;，正在抓取的是&apos;, myurl);</div><div class="line"></div><div class="line">        superagent.get(myurl).end(function(err, ssres) &#123;</div><div class="line">          if (err) &#123;</div><div class="line">                callback(err, myurl + &apos; error happened!&apos;);</div><div class="line">            &#125;</div><div class="line">            var time = new Date().getTime() - fetchStart;</div><div class="line">            console.log(&apos;抓取 &apos; + myurl + &apos; 成功&apos;, &apos;，耗时&apos; + time + &apos;毫秒&apos;);</div><div class="line">            concurrencyCount--;</div><div class="line"></div><div class="line">            var $ = cheerio.load(ssres.text);</div><div class="line">            var result = &#123;</div><div class="line">              title: $(&apos;#questionTitle&gt;a&apos;).text(),</div><div class="line">              author: $(&apos;.question__author&gt;a&gt;strong&apos;).text(),</div><div class="line">              answer: $(&apos;#answers-title&apos;).text()</div><div class="line">            &#125;;</div><div class="line">            callback(null, result);</div><div class="line">        &#125;)</div><div class="line">  &#125;</div><div class="line"></div><div class="line">    // 控制最大并发数为5，在结果中取出callback返回来的整个结果数组。</div><div class="line">    async.mapLimit(topicUrls, 5, function (myurl, callback) &#123;</div><div class="line">        fetchUrl(myurl, callback);</div><div class="line">    &#125;, function (err, result) &#123;</div><div class="line">        console.log(&apos;===== result: ======\n&apos;, result);</div><div class="line">        //res.send(result);</div><div class="line">    &#125;);</div><div class="line">&#125;)</div><div class="line"></div><div class="line">// 获得所有主题链接 topicUrls</div><div class="line">pageUrls.forEach(function(page) &#123;</div><div class="line">    superagent.get(page).end(function(err, sres) &#123;</div><div class="line">        if(err) &#123;</div><div class="line">            return next(err);</div><div class="line">        &#125;</div><div class="line">        var $ = cheerio.load(sres.text);</div><div class="line">        $(&apos;.stream-list__item&apos;).each(function(idx, element) &#123;</div><div class="line">            var $element = $(element).find(&apos;.title&gt;a&apos;);</div><div class="line">            var href = url.resolve(baseUrl, $element.attr(&apos;href&apos;));</div><div class="line">            topicUrls.push(href);</div><div class="line">        &#125;)</div><div class="line">        console.log(&apos;get topicUrls successful!\n&apos;);</div><div class="line">        ep.emit(&apos;topic_html&apos;, topicUrls);</div><div class="line">    &#125;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>不知道怎么会在前后多出来那么大一块空白-_-</p>
+
+      
+    </div>
+    <footer>
+      
+          
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style pull-right">
+	<span class="jiathis_txt">分享到：</span>
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_tqq"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+
+          <div class="clearfix"></div>
+          <nav id="pagination">
+  
+  
+    <a href="/2016/09/24/谢谢平潭岛/" class="alignright next">Prev<i class="fa fa-long-arrow-right"></i></a>
+  
+  <div class="clearfix"></div>
+</nav>
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">留言</h1>
+
+  
+      <!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread" data-thread-key="/2016/09/26/node简单的爬虫/"></div>
+<!-- Duoshuo Comment END -->
+  
+</section>
+
+
+
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div>
+  
+  &copy; 2016 panbr
+  
+</div>
+Powered by <a href="https://hexo.io/" title="Hexo" target="_blank" rel="external">Hexo</a>
+
+<div class="clearfix"></div></footer>
+  
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+
+
+
+    <script type="text/javascript">
+        (function(){
+
+            $(window).scroll(function(){
+
+                var scrollTop = $(window).scrollTop();
+                if ( scrollTop >200 ){
+                    $("#main-nav").removeClass('normal_mode').addClass('top_mode');
+                } else{
+                    $("#main-nav").removeClass('top_mode').addClass('normal_mode');
+                }
+
+            });
+
+        })();
+    </script>
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox({
+      'titlePosition': 'inside'
+    });
+  })(jQuery);
+  </script>
+
+
+
+    
+    <script type="text/javascript">
+      var duoshuoQuery = {short_name:"panbr"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = 'http://static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0] 
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+
+
+<script type="text/javascript">
+  
+  $(function(){
+
+    $('.title').hover(
+      function() {      
+        $(this).stop().animate(
+          {'marginLeft': '10px'}, 200
+        );   
+      }, 
+      function() {       
+        $(this).stop().animate({'marginLeft': '0px'}, 200);      
+      
+    });   
+
+  });
+
+</script>
+
+
+</body>
+</html>
