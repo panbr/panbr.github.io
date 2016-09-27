@@ -119,7 +119,7 @@ p {
   border-bottom: 1px solid #ddd;
   font-family: "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
   line-height: 2.5em;
-  background: url("http://p1.bpimg.com/575157/3182f79e76a823dd.gif") #fff no-repeat;
+  background: url("http://p1.bpimg.com/575157/3182f79e76a823dd.gif") #fff no-repeat top center;
 }
 #header #main-nav.top_mode {
   position: fixed;
