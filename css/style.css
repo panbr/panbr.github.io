@@ -119,6 +119,7 @@ p {
   border-bottom: 1px solid #ddd;
   font-family: "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
   line-height: 2.5em;
+  background: url("http://p1.bpimg.com/575157/3182f79e76a823dd.gif") #fff no-repeat;
 }
 #header #main-nav.top_mode {
   position: fixed;
@@ -509,8 +510,8 @@ article:last-child {
   background-size: cover;
 }
 #cover #profile {
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 #cover #profile a {
   font-size: 18px;
@@ -574,7 +575,7 @@ article:last-child {
   margin: 0;
 }
 #cover {
-  background-image: url("/cover.png");
+  background-image: url("http://p1.bpimg.com/575157/52c83f113b0ecedf.jpg");
 }
 .archive-title {
   color: #777;
@@ -702,13 +703,13 @@ article:last-child {
 }
 #footer {
   color: #777;
-  padding-top: 15px;
-  margin-bottom: 20px;
-  border-top: 1px solid #ddd;
+  padding-top: 10px;
+  padding-bottom: 5px;
   font: 0.9em/1.6 "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
   text-shadow: 0 0 1px #fff;
   margin-top: 10px;
   text-align: center;
+  background: url("http://p1.bpimg.com/575157/3b0f56e22859db74.gif") #fff no-repeat bottom center;
 }
 #footer .icon {
   width: 32px;
