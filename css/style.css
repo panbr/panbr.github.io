@@ -394,7 +394,7 @@ article .entry h2 {
 }
 article .entry img,
 article .entry video {
-  max-width: 75%;
+  max-width: 100%;
   height: auto;
   border: none;
   display: block;
