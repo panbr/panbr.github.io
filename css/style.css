@@ -108,7 +108,7 @@ p {
   margin-bottom: -44px;
 }
 #header a {
-  color: #333;
+  color: #666;
 }
 #header a:hover {
   color: #258fb8;
@@ -154,7 +154,7 @@ p {
   margin-left: 10%;
 }
 #header #main-nav ul li a {
-  color: #333;
+  color: #666;
   font-size: 16px;
 }
 #header #main-nav ul li a:hover {
