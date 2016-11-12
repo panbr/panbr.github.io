@@ -127,6 +127,7 @@ p {
 }
 #header #main-nav {
   font-family: "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-weight: 600;
   line-height: 2.5em;
   background: url("http://p1.bpimg.com/575157/3182f79e76a823dd.gif") #fff no-repeat top center;
   border-top: 1px solid #ddd;
@@ -138,6 +139,9 @@ p {
   left: 0px;
   right: 0px;
   z-index: 5000;
+}
+#header #main-nav .logo {
+  font-weight: 800;
 }
 #header #main-nav ul {
   list-style: none;
