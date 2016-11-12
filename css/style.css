@@ -108,7 +108,7 @@ p {
   margin-bottom: -44px;
 }
 #header a {
-  color: #999;
+  color: #333;
 }
 #header a:hover {
   color: #258fb8;
@@ -128,8 +128,9 @@ p {
 #header #main-nav {
   font-family: "Lato", Helvetica Neue, Helvetica, Arial, sans-serif;
   line-height: 2.5em;
-  height: 0;
-  z-index: -5;
+  background: url("http://p1.bpimg.com/575157/3182f79e76a823dd.gif") #fff no-repeat top center;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
 }
 #header #main-nav.top_mode {
   position: fixed;
@@ -137,22 +138,6 @@ p {
   left: 0px;
   right: 0px;
   z-index: 5000;
-  height: auto;
-  background: url("http://p1.bpimg.com/575157/3182f79e76a823dd.gif") #fff no-repeat top center;
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
-}
-#header #main-nav.top_mode .logo>a {
-  color: #000;
-}
-#header #main-nav.top_mode ul li a {
-  color: #333;
-}
-#header #main-nav .logo>a {
-  color: #fff;
-}
-#header #main-nav .logo>a:hover {
-  color: #258fb8;
 }
 #header #main-nav ul {
   list-style: none;
@@ -165,7 +150,7 @@ p {
   margin-left: 10%;
 }
 #header #main-nav ul li a {
-  color: #fff;
+  color: #333;
   font-size: 16px;
 }
 #header #main-nav ul li a:hover {
