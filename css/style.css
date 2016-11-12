@@ -162,7 +162,7 @@ p {
 #header #main-nav ul li {
   display: inline-block;
   padding: 3px 0px;
-  margin-right: 10%;
+  margin-left: 10%;
 }
 #header #main-nav ul li a {
   color: #fff;
