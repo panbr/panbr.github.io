@@ -589,7 +589,7 @@ a:hover {
 
 /* Backgroud image */
 #bg {
-  background-image: url("http://p1.bqimg.com/575157/4a90f65715d4a0e2.jpg");
+  background-image: url("http://p1.bqimg.com/575157/f5715d9574726e78.jpg");
   background-color: #050a10;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -942,6 +942,7 @@ article.sticky .featured-post {
 	margin: 0 0 24px;
 	margin: 0 0 1.714285714rem;
 	line-height: 1.714285714;
+	text-align: justify;
 }
 
 .entry-content a,
