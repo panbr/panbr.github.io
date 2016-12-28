@@ -1040,7 +1040,7 @@ pre .javascript .function {
 }
 @media (max-width: 767px) {
   .posts-expand {
-    margin: 0 20px;
+    margin: 0 10px;
   }
   .post-body pre,
   .post-body .highlight {
@@ -1553,7 +1553,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #f09604;
+  background: #dde7ff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2229,7 +2229,7 @@ body {
 @media (min-width: 768px) and (max-width: 991px) {
   .content-wrap {
     width: 100%;
-    padding: 20px;
+    padding: 10px;
   }
 }
 @media (max-width: 767px) {
