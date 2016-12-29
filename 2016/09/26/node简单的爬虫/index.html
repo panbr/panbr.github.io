@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="SweetHouse">
 <meta property="og:description" content="最近学习 nodejs ，做一个爬虫玩玩。不知深浅爬了 segmentfault ，希望站长大大不要封我的IP，只是做练习用用，同时也表达对贵社区的喜爱和敬重。">
 <meta property="og:image" content="http://p1.bpimg.com/575157/0504d2df35f19581.png">
-<meta property="og:updated_time" content="2016-09-29T06:32:29.478Z">
+<meta property="og:updated_time" content="2016-12-29T01:48:43.257Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="node简单的爬虫">
 <meta name="twitter:description" content="最近学习 nodejs ，做一个爬虫玩玩。不知深浅爬了 segmentfault ，希望站长大大不要封我的IP，只是做练习用用，同时也表达对贵社区的喜爱和敬重。">
@@ -277,11 +277,11 @@
 
       
         <p>最近学习 nodejs ，做一个爬虫玩玩。不知深浅爬了 segmentfault ，希望站长大大不要封我的IP，只是做练习用用，同时也表达对贵社区的喜爱和敬重。<br><a id="more"></a></p>
-<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ol>
+<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
 <li>目标网站：<a href="https://segmentfault.com" target="_blank" rel="external">https://segmentfault.com</a></li>
 <li>分别进入每个主题，取得问题的题目、提问者、回答数，并打印。</li>
-</ol>
-<h4 id="输出示例"><a href="#输出示例" class="headerlink" title="输出示例:"></a>输出示例:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">  &#123;</div><div class="line">    &quot;title&quot;: &quot;python 是否存在限制 key 的 dict&quot;,</div><div class="line">    &quot;author&quot;: &quot;caimaoy&quot;,</div><div class="line">    &quot;answer&quot;: &quot;2个回答&quot;</div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    &quot;title&quot;: &quot;vue.js 主页面组件替换或跳转&quot;,</div><div class="line">    &quot;author&quot;: &quot;yulingsong&quot;,</div><div class="line">    &quot;answer&quot;: &quot;2个回答&quot;</div><div class="line">  &#125;</div><div class="line">]</div></pre></td></tr></table></figure>
+</ul>
+<h2 id="输出示例"><a href="#输出示例" class="headerlink" title="输出示例:"></a>输出示例:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">  &#123;</div><div class="line">    &quot;title&quot;: &quot;python 是否存在限制 key 的 dict&quot;,</div><div class="line">    &quot;author&quot;: &quot;caimaoy&quot;,</div><div class="line">    &quot;answer&quot;: &quot;2个回答&quot;</div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    &quot;title&quot;: &quot;vue.js 主页面组件替换或跳转&quot;,</div><div class="line">    &quot;author&quot;: &quot;yulingsong&quot;,</div><div class="line">    &quot;answer&quot;: &quot;2个回答&quot;</div><div class="line">  &#125;</div><div class="line">]</div></pre></td></tr></table></figure>
 <h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><ul>
 <li>安装 node 依赖包；</li>
 <li>使用 superagent 抓取网页；</li>
@@ -290,35 +290,35 @@
 <li>使用 async 控制并发。</li>
 </ul>
 <h2 id="主要库的介绍"><a href="#主要库的介绍" class="headerlink" title="主要库的介绍"></a>主要库的介绍</h2><ul>
-<li><p>superagent<br>superagent(<a href="http://visionmedia.github.io/superagent/" target="_blank" rel="external">http://visionmedia.github.io/superagent/</a>) 是个 http 方面的库，轻量灵活而且简单易用。与 JQuery 的 ajax 类似，可以发起 get 或 post 请求。简单的用法如下：</p>
+<li><p><strong> superagent </strong><br>superagent(<a href="http://visionmedia.github.io/superagent/" target="_blank" rel="external">http://visionmedia.github.io/superagent/</a>) 是个 http 方面的库，轻量灵活而且简单易用。与 JQuery 的 ajax 类似，可以发起 get 或 post 请求。简单的用法如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">request</div><div class="line">   .get(url)</div><div class="line">   .end(function(err, res)&#123;</div><div class="line">       // TODO </div><div class="line">   &#125;);</div></pre></td></tr></table></figure>
 </li>
-<li><p>cheerio<br>cheerio(<a href="https://github.com/cheeriojs/cheerio" target="_blank" rel="external">https://github.com/cheeriojs/cheerio</a>) 可以理解成一个 Node.js 版的 jquery，用来从网页中以 css selector 取数据，使用方式跟 jquery 一样一样的。</p>
+<li><p><strong> cheerio </strong><br>cheerio(<a href="https://github.com/cheeriojs/cheerio" target="_blank" rel="external">https://github.com/cheeriojs/cheerio</a>) 可以理解成一个 Node.js 版的 jquery，用来从网页中以 css selector 取数据，使用方式跟 jquery 一样一样的。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">let cheerio = require(&apos;cheerio&apos;)</div><div class="line">let $ = cheerio.load(&apos;&lt;h2 class=&quot;title&quot;&gt;Hello world&lt;/h2&gt;&apos;)</div><div class="line">$(&apos;h2.title&apos;).text(&apos;Hello there!&apos;)</div><div class="line">$(&apos;h2&apos;).addClass(&apos;welcome&apos;)</div></pre></td></tr></table></figure>
 </li>
-<li><p>EventProxy<br>EventProxy 利用事件机制解耦复杂业务逻辑，移除被广为诟病的深度callback嵌套问题，将串行等待变成并行等待，提升多异步协作场景下的执行效率。<br>过去的，深度嵌套的，串行的长这样：</p>
+<li><p><strong> EventProxy </strong><br>EventProxy 利用事件机制解耦复杂业务逻辑，移除被广为诟病的深度callback嵌套问题，将串行等待变成并行等待，提升多异步协作场景下的执行效率。<br>过去的，深度嵌套的，串行的长这样：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var render = function (template, data) &#123;</div><div class="line">  _.template(template, data);</div><div class="line">&#125;;</div><div class="line">$.get(&quot;template&quot;, function (template) &#123;</div><div class="line">  // something</div><div class="line">  $.get(&quot;data&quot;, function (data) &#123;</div><div class="line">    // something</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>现在，无深度嵌套的，并行的长这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var ep = EventProxy.create(&quot;template&quot;, &quot;data&quot;, &quot;l10n&quot;, function (template, data, l10n) &#123;</div><div class="line">    _.template(template, data, l10n);</div><div class="line">&#125;);</div><div class="line">$.get(&quot;template&quot;, function (template) &#123;</div><div class="line">    // something</div><div class="line">    ep.emit(&quot;template&quot;, template);</div><div class="line">&#125;);</div><div class="line">$.get(&quot;data&quot;, function (data) &#123;</div><div class="line">    // something</div><div class="line">    ep.emit(&quot;data&quot;, data);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
 <ul>
-<li>async<br>async (<a href="http://caolan.github.io/async/" target="_blank" rel="external">http://caolan.github.io/async/</a>) 可以用来控制并发连接数。为什么要控制并发数呢？我们在写爬虫的时候，如果有 1000 个链接要去爬，那么不可能同时发出 1000 个并发链接出去（站长可能会以为你是恶意攻击…）。我们需要控制一下并发的数量，比如并发 10 个就好，然后慢慢抓完这 1000 个链接。这里主要用mapLimit这个方法，例如：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">async.mapLimit(urls, 10, function (url, callback) &#123;</div><div class="line">  // fetchData(url, callback);</div><div class="line">&#125;, function (err, result) &#123;</div><div class="line">  // handle err</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<li><strong> async </strong><br>async (<a href="http://caolan.github.io/async/" target="_blank" rel="external">http://caolan.github.io/async/</a>) 可以用来控制并发连接数。为什么要控制并发数呢？我们在写爬虫的时候，如果有 1000 个链接要去爬，那么不可能同时发出 1000 个并发链接出去（站长可能会以为你是恶意攻击…）。我们需要控制一下并发的数量，比如并发 10 个就好，然后慢慢抓完这 1000 个链接。这里主要用mapLimit这个方法，例如：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">async.mapLimit(urls, 10, function (url, callback) &#123;</div><div class="line">  // fetchData(url, callback);</div><div class="line">&#125;, function (err, result) &#123;</div><div class="line">  // handle err</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="实现大致过程"><a href="#实现大致过程" class="headerlink" title="实现大致过程"></a>实现大致过程</h2><ul>
-<li><p>安装依赖</p>
+<li><p><strong> 安装依赖 </strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm init</div><div class="line">npm install MODULES --save</div></pre></td></tr></table></figure>
 </li>
-<li><p>引入类库</p>
+<li><p><strong> 引入类库 </strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var eventproxy = require(&apos;eventproxy&apos;);</div><div class="line">var superagent = require(&apos;superagent&apos;);</div><div class="line">var cheerio = require(&apos;cheerio&apos;);</div><div class="line">var async = require(&quot;async&quot;);</div></pre></td></tr></table></figure>
 </li>
-<li><p>取得主题所有url，并且注册到eventproxy中</p>
+<li><p><strong> 取得主题所有url，并且注册到eventproxy中 </strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">superagent.get(url).end(function(err, sres) &#123;</div><div class="line">    if(err) &#123;</div><div class="line">        return next(err);</div><div class="line">    &#125;</div><div class="line">    var $ = cheerio.load(sres.text);</div><div class="line">    $(element).each(function(idx, element) &#123;</div><div class="line">        // save urls</div><div class="line">    &#125;)</div><div class="line">    ep.emit(&apos;topic_html&apos;, urls); // 交给eventproxy统一处理</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 </li>
-<li><p>EventProxy控制异步结束，进入每一个主题</p>
+<li><p><strong> EventProxy控制异步结束，进入每一个主题 </strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ep.after(&apos;topic_html&apos;, pageUrls.length, function(topics) &#123;</div><div class="line">    // fetchTopics</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 </li>
-<li><p>async控制最大并发数，在结果中取出callback返回来的整个结果数组。</p>
+<li><p><strong> async控制最大并发数，在结果中取出callback返回来的整个结果数组。 </strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">async.mapLimit(topicUrls, 5, function (myurl, callback) &#123;</div><div class="line">    fetchUrl(myurl, callback);</div><div class="line">&#125;, function (err, result) &#123;</div><div class="line">    console.log(result);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </li>
 </ul>
@@ -480,7 +480,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#输出示例"><span class="nav-number">1.0.1.</span> <span class="nav-text">输出示例:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#知识点"><span class="nav-number">2.</span> <span class="nav-text">知识点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要库的介绍"><span class="nav-number">3.</span> <span class="nav-text">主要库的介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现大致过程"><span class="nav-number">4.</span> <span class="nav-text">实现大致过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附件（源代码）"><span class="nav-number">6.</span> <span class="nav-text">附件（源代码）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出示例"><span class="nav-number">2.</span> <span class="nav-text">输出示例:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#知识点"><span class="nav-number">3.</span> <span class="nav-text">知识点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要库的介绍"><span class="nav-number">4.</span> <span class="nav-text">主要库的介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现大致过程"><span class="nav-number">5.</span> <span class="nav-text">实现大致过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附件（源代码）"><span class="nav-number">7.</span> <span class="nav-text">附件（源代码）</span></a></li></ol></div>
             
           </div>
         </section>
