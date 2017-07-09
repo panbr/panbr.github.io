@@ -1,0 +1,609 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="前端," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Async/Await应该是目前最简单的异步方案了，首先来看个例子。
+这里我们要实现一个暂停功能，输入N毫秒，则停顿N毫秒后才继续往下执行。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="异步解决方案 async/await">
+<meta property="og:url" content="http://sweethouse.cn/2017/07/09/异步解决方案-async-await/index.html">
+<meta property="og:site_name" content="SweetHouse">
+<meta property="og:description" content="Async/Await应该是目前最简单的异步方案了，首先来看个例子。
+这里我们要实现一个暂停功能，输入N毫秒，则停顿N毫秒后才继续往下执行。">
+<meta property="og:updated_time" content="2017-07-09T13:56:56.700Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="异步解决方案 async/await">
+<meta name="twitter:description" content="Async/Await应该是目前最简单的异步方案了，首先来看个例子。
+这里我们要实现一个暂停功能，输入N毫秒，则停顿N毫秒后才继续往下执行。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 异步解决方案 async/await | SweetHouse </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="http://s6.cnzz.com/stat.php?id=1260781135&web_id=1260781135" type="text/javascript"></script>
+  </div>
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">SweetHouse</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">梦想对失败者是许可的，回忆只属于孤独的人</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                异步解决方案 async/await
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-07-09T21:42:29+08:00" content="2017-07-09 21:42:29">
+              2017-07-09 21:42:29
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Async/Await应该是目前最简单的异步方案了，首先来看个例子。</p>
+<p>这里我们要实现一个暂停功能，输入N毫秒，则停顿N毫秒后才继续往下执行。</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">var sleep = function (time) &#123;</div><div class="line">    return new Promise(function (resolve, reject) &#123;</div><div class="line">        setTimeout(function () &#123;</div><div class="line">            resolve();</div><div class="line">        &#125;, time);</div><div class="line">    &#125;)</div><div class="line">&#125;;</div><div class="line"></div><div class="line">var start = async function () &#123;</div><div class="line">    // 在这里使用起来就像同步代码那样直观</div><div class="line">    console.log(&apos;start&apos;);</div><div class="line">    await sleep(3000);</div><div class="line">    console.log(&apos;end&apos;);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">start();</div></pre></td></tr></table></figure>
+<p>控制台先输出start，稍等3秒后，输出了end。</p>
+<p><strong> 基本规则 </strong></p>
+<ul>
+<li>async 表示这是一个async函数，await只能用在这个函数里面。</li>
+<li>await 表示在这里等待promise返回结果了，再继续执行。</li>
+<li>await 后面跟着的应该是一个promise对象（当然，其他返回值也没关系，只是会立即执行，不过那样就没有意义了…）</li>
+</ul>
+<p><strong> 获得返回值 </strong></p>
+<p>await等待的虽然是promise对象，但不必写.then(..)，直接可以得到返回值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var sleep = function (time) &#123;</div><div class="line">    return new Promise(function (resolve, reject) &#123;</div><div class="line">        setTimeout(function () &#123;</div><div class="line">            // 返回 ‘ok’</div><div class="line">            resolve(&apos;ok&apos;);</div><div class="line">        &#125;, time);</div><div class="line">    &#125;)</div><div class="line">&#125;;</div><div class="line"></div><div class="line">var start = async function () &#123;</div><div class="line">    let result = await sleep(3000);</div><div class="line">    console.log(result); // 收到 ‘ok’</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p><strong> 捕捉错误 </strong></p>
+<p>既然.then(..)不用写了，那么.catch(..)也不用写，可以直接用标准的try catch语法捕捉错误。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">var sleep = function (time) &#123;</div><div class="line">    return new Promise(function (resolve, reject) &#123;</div><div class="line">        setTimeout(function () &#123;</div><div class="line">            // 模拟出错了，返回 ‘error’</div><div class="line">            reject(&apos;error&apos;);</div><div class="line">        &#125;, time);</div><div class="line">    &#125;)</div><div class="line">&#125;;</div><div class="line"></div><div class="line">var start = async function () &#123;</div><div class="line">    try &#123;</div><div class="line">        console.log(&apos;start&apos;);</div><div class="line">        await sleep(3000); // 这里得到了一个返回错误</div><div class="line">        </div><div class="line">        // 所以以下代码不会被执行了</div><div class="line">        console.log(&apos;end&apos;);</div><div class="line">    &#125; catch (err) &#123;</div><div class="line">        console.log(err); // 这里捕捉到错误 `error`</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p><strong> 循环多个await </strong></p>
+<p>await看起来就像是同步代码，所以可以理所当然的写在for循环里，不必担心以往需要闭包才能解决的问题。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">..省略以上代码</div><div class="line"></div><div class="line">var start = async function () &#123;</div><div class="line">    for (var i = 1; i &lt;= 10; i++) &#123;</div><div class="line">        console.log(`当前是第$&#123;i&#125;次等待..`);</div><div class="line">        await sleep(1000);</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>值得注意的是，await必须在async函数的上下文中的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">..省略以上代码</div><div class="line"></div><div class="line">let 一到十 = [1,2,3,4,5,6,7,8,9,10];</div><div class="line"></div><div class="line">// 错误示范</div><div class="line">一到十.forEach(function (v) &#123;</div><div class="line">    console.log(`当前是第$&#123;v&#125;次等待..`);</div><div class="line">    await sleep(1000); // 错误!! await只能在async函数中运行</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// 正确示范</div><div class="line">for(var v of 一到十) &#123;</div><div class="line">    console.log(`当前是第$&#123;v&#125;次等待..`);</div><div class="line">    await sleep(1000); // 正确, for循环的上下文还在async函数中</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong> 第二个例子 </strong></p>
+<p>这个例子是一个小应用，根据电影文件名，自动下载对应的海报。</p>
+<p>直接贴出代码，就不说明了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">import fs from &apos;fs&apos;;</div><div class="line">import path from &apos;path&apos;;</div><div class="line">import request from &apos;request&apos;;</div><div class="line"></div><div class="line">var movieDir = __dirname + &apos;/movies&apos;,</div><div class="line">    exts     = [&apos;.mkv&apos;, &apos;.avi&apos;, &apos;.mp4&apos;, &apos;.rm&apos;, &apos;.rmvb&apos;, &apos;.wmv&apos;];</div><div class="line"></div><div class="line">// 读取文件列表</div><div class="line">var readFiles = function () &#123;</div><div class="line">    return new Promise(function (resolve, reject) &#123;</div><div class="line">        fs.readdir(movieDir, function (err, files) &#123;</div><div class="line">            resolve(files.filter((v) =&gt; exts.includes(path.parse(v).ext)));</div><div class="line">        &#125;);</div><div class="line">    &#125;);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">// 获取海报</div><div class="line">var getPoster = function (movieName) &#123;</div><div class="line">    let url = `https://api.douban.com/v2/movie/search?q=$&#123;encodeURI(movieName)&#125;`;</div><div class="line"></div><div class="line">    return new Promise(function (resolve, reject) &#123;</div><div class="line">        request(&#123;url: url, json: true&#125;, function (error, response, body) &#123;</div><div class="line">            if (error) return reject(error);</div><div class="line"></div><div class="line">            resolve(body.subjects[0].images.large);</div><div class="line">        &#125;)</div><div class="line">    &#125;);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">// 保存海报</div><div class="line">var savePoster = function (movieName, url) &#123;</div><div class="line">    request.get(url).pipe(fs.createWriteStream(path.join(movieDir, movieName + &apos;.jpg&apos;)));</div><div class="line">&#125;;</div><div class="line"></div><div class="line"></div><div class="line">(async () =&gt; &#123;</div><div class="line">    let files = await readFiles();</div><div class="line"></div><div class="line">    // await只能使用在原生语法</div><div class="line">    for (var file of files) &#123;</div><div class="line">        let name = path.parse(file).name;</div><div class="line"></div><div class="line">        console.log(`正在获取【$&#123;name&#125;】的海报`);</div><div class="line">        savePoster(name, await getPoster(name));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    console.log(&apos;=== 获取海报完成 ===&apos;);</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+<p>—— 本文转自《<a href="https://cnodejs.org/topic/5640b80d3a6aa72c5e0030b6" target="_blank" rel="external">cnodejs</a>》</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag">#前端</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/26/CSS-修改-placeholder-的文字颜色/" rel="next" title="CSS 修改 placeholder 的文字颜色">
+                <i class="fa fa-chevron-left"></i> CSS 修改 placeholder 的文字颜色
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <!-- 评论 start 写死的 -->
+      <div id="hypercomments_widget"></div>
+      <script type="text/javascript">
+      _hcwp = window._hcwp || [];
+      _hcwp.push({widget:"Stream", widget_id: 92211});
+      (function() {
+      if("HC_LOAD_INIT" in window)return;
+      HC_LOAD_INIT = true;
+      var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
+      var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
+      hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/92211/"+lang+"/widget.js";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hcc, s.nextSibling);
+      })();
+      </script>
+      <a href="http://hypercomments.com" rel = "nofollow" class="hc-link" title="comments widget">comments powered by HyperComments</a>
+      <!-- 评论 end -->
+    
+  </div>
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/logo.png"
+               alt="panbr" />
+          <p class="site-author-name" itemprop="name">panbr</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">panbr</span>
+</div>
+
+<div class="power">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>&nbsp;&nbsp;
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    Next
+  </a>&nbsp;&nbsp;
+  <!-- 站长统计 -->
+  <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260781135'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1260781135%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+  
+
+    
+
+   
+        <!-- UY BEGIN -->
+        <script type="text/javascript" src="//v2.uyan.cc/code/uyan.js?uid=2136454"></script>
+        <!-- UY END -->
+    
+  
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
