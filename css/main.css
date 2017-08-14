@@ -189,7 +189,12 @@ body {
   font-size: 14px;
   line-height: 2;
   color: #555;
-  background: #fff;
+  background-color: #fff;
+  background-image: url("http://ocz1xi4bl.bkt.clouddn.com/main-bg.png");
+  background-position: left top;
+  background-size: auto;
+  background-repeat: repeat;
+  background-attachment: scroll;
 }
 @media (max-width: 767px) {
   body {
@@ -1554,7 +1559,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #1220be;
+  background: #fe75ff;
 }
 .links-of-blogroll {
   font-size: 13px;
