@@ -1,0 +1,602 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="前端," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="在那个还不算遥远的刀耕火种时代，Java Web 项目中的前端开发者写好页面模板，然后丢给后台哥们完事。这过程中后台开发人员需要写一些蹩脚的 js 交互代码，如果模板需要调整，还要求前端er在别人电脑上面修改。 这样不仅开发效率低，更主要的是，将我们前端开发人员置于何处，切图仔、网页制作？不想当厨子的士兵不是好司机，我们当然要自己主宰产品的展现，也要拒绝低效的工作环境，因此探索前后端分离的方案，从">
+<meta name="keywords" content="前端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅析前后端分离">
+<meta property="og:url" content="http://sweethouse.cn/2016/11/03/浅析前后端分离/index.html">
+<meta property="og:site_name" content="SweetHouse">
+<meta property="og:description" content="在那个还不算遥远的刀耕火种时代，Java Web 项目中的前端开发者写好页面模板，然后丢给后台哥们完事。这过程中后台开发人员需要写一些蹩脚的 js 交互代码，如果模板需要调整，还要求前端er在别人电脑上面修改。 这样不仅开发效率低，更主要的是，将我们前端开发人员置于何处，切图仔、网页制作？不想当厨子的士兵不是好司机，我们当然要自己主宰产品的展现，也要拒绝低效的工作环境，因此探索前后端分离的方案，从">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-08T16:47:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="浅析前后端分离">
+<meta name="twitter:description" content="在那个还不算遥远的刀耕火种时代，Java Web 项目中的前端开发者写好页面模板，然后丢给后台哥们完事。这过程中后台开发人员需要写一些蹩脚的 js 交互代码，如果模板需要调整，还要求前端er在别人电脑上面修改。 这样不仅开发效率低，更主要的是，将我们前端开发人员置于何处，切图仔、网页制作？不想当厨子的士兵不是好司机，我们当然要自己主宰产品的展现，也要拒绝低效的工作环境，因此探索前后端分离的方案，从">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 浅析前后端分离 | SweetHouse </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="http://s6.cnzz.com/stat.php?id=1260781135&web_id=1260781135" type="text/javascript"></script>
+  </div>
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">SweetHouse</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">梦想对失败者是许可的，回忆只属于孤独的人</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                浅析前后端分离
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-03T22:02:45+08:00" content="2016-11-03 22:02:45">
+              2016-11-03 22:02:45
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在那个还不算遥远的刀耕火种时代，Java Web 项目中的前端开发者写好页面模板，然后丢给后台哥们完事。这过程中后台开发人员需要写一些蹩脚的 js 交互代码，如果模板需要调整，还要求前端er在别人电脑上面修改。 这样不仅开发效率低，更主要的是，将我们前端开发人员置于何处，切图仔、网页制作？不想当厨子的士兵不是好司机，我们当然要自己主宰产品的展现，也要拒绝低效的工作环境，因此探索前后端分离的方案，从来就没有停止过。</p>
+<a id="more"></a>
+<p>之所以说没有停止，一方面为了赞扬广大一线 WEB 开发者勇于探索的精神(呵呵)，另一方面也是因为现有的解决方案还有待完善。目前来说比较流行的前后端分离的解决方案有两种：</p>
+<blockquote>
+<p><strong> 1. 前端使用动态模板，后端只提供接口 </strong></p>
+</blockquote>
+<p>这种方案主要针对包含大量交互功能的应用类系统，比如后台管理。前端采用 MV* (angular, react) 框架，或者直接简单粗暴使用 ajax ，利用模板引擎完成完整的页面效果，后台根据事先的数据交互约定，提供相应的 RESTful 接口。项目前期，前后端分别独立开发，数据联调阶段，前端可以使用 Nginx 反向代理（现在特别流行的 webpack 已经内置了该功能），静态请求由 Nginx 处理，动态的请求转发给后端服务。</p>
+<p>这种方式也有一些缺点，MV* 框架由于需要在前端渲染模板，这对于 SEO 来说简直是灾难；angular, react 需要更高级的浏览器(IE9 +)支持，这并不能满足所有用户的需求；angular, react 多数采用单页面形式，除了首屏加载慢以外，某些模块的加载失败甚至可能影响整个系统的功能。</p>
+<blockquote>
+<p><strong> 2. 使用 Node 作为中间层 </strong></p>
+</blockquote>
+<p>对于内容展现类应用，注重浏览效果和交互体验，可以采用这种方案。在前端和后台之间加入 Node 中间层，此时浏览器负责 CSS 渲染和 DOM 操作，Node 层进行数据请求、路由和页面渲染等任务，服务器提供数据接口。这种方式一定程度上增加了前端开发人员的工作量，也对其能力提出更高的要求，因为 Node 层也需要他们来编写。具体实现可以参考淘宝的”中途岛”项目。</p>
+<p>除了上述的两种方案，这两年出现了前后端通吃的”全栈工程师”这样的高端工种，分分钟鄙视掉前端后台，分离神马的问题也就不存在了。还有一点也想提一下，那就是 node.js 的出现使得前端er成功插足后台领域，node + mongodb + ejs 这样的组合照样可以撸出一套完整的系统。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag">#前端</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/23/厦门印象/" rel="next" title="厦门印象">
+                <i class="fa fa-chevron-left"></i> 厦门印象
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/09/vue-2-0-loading-组件/" rel="prev" title="vue-2.0 loading 组件">
+                vue-2.0 loading 组件 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <!-- 评论 start 写死的 -->
+      <div id="hypercomments_widget"></div>
+      <script type="text/javascript">
+      _hcwp = window._hcwp || [];
+      _hcwp.push({widget:"Stream", widget_id: 92211});
+      (function() {
+      if("HC_LOAD_INIT" in window)return;
+      HC_LOAD_INIT = true;
+      var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
+      var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
+      hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/92211/"+lang+"/widget.js";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hcc, s.nextSibling);
+      })();
+      </script>
+      <a href="http://hypercomments.com" rel = "nofollow" class="hc-link" title="comments widget">comments powered by HyperComments</a>
+      <!-- 评论 end -->
+    
+  </div>
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/logo.png"
+               alt="panbr" />
+          <p class="site-author-name" itemprop="name">panbr</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">panbr</span>
+</div>
+
+<div class="power">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>&nbsp;&nbsp;
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    Next
+  </a>&nbsp;&nbsp;
+  <!-- 站长统计 -->
+  <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260781135'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1260781135%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/canvas-nest/canvas-nest.js"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+  
+
+    
+
+   
+        <!-- UY BEGIN -->
+        <script type="text/javascript" src="//v2.uyan.cc/code/uyan.js?uid=2136454"></script>
+        <!-- UY END -->
+    
+  
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

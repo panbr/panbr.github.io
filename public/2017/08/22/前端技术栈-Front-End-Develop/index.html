@@ -1,0 +1,609 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="前端," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="基础篇HTML参考W3C标准，理解如何浏览和创建网页、基本的语法规范、常用标签及属性、网页之间的链接与跳转、标签节点层级节点；DOM基本结构、节点对象的操作、事件特性及使用、常见的内置DOM对象、常见的BOM功能；HTML5 语义化结构、多媒体 、本地存储(LocalStorage, SessionStorage, Cookie)、其他常见API、Canvas等。">
+<meta name="keywords" content="前端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端技术栈(Front-End-Develop)">
+<meta property="og:url" content="http://sweethouse.cn/2017/08/22/前端技术栈-Front-End-Develop/index.html">
+<meta property="og:site_name" content="SweetHouse">
+<meta property="og:description" content="基础篇HTML参考W3C标准，理解如何浏览和创建网页、基本的语法规范、常用标签及属性、网页之间的链接与跳转、标签节点层级节点；DOM基本结构、节点对象的操作、事件特性及使用、常见的内置DOM对象、常见的BOM功能；HTML5 语义化结构、多媒体 、本地存储(LocalStorage, SessionStorage, Cookie)、其他常见API、Canvas等。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-08T16:58:01.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端技术栈(Front-End-Develop)">
+<meta name="twitter:description" content="基础篇HTML参考W3C标准，理解如何浏览和创建网页、基本的语法规范、常用标签及属性、网页之间的链接与跳转、标签节点层级节点；DOM基本结构、节点对象的操作、事件特性及使用、常见的内置DOM对象、常见的BOM功能；HTML5 语义化结构、多媒体 、本地存储(LocalStorage, SessionStorage, Cookie)、其他常见API、Canvas等。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 前端技术栈(Front-End-Develop) | SweetHouse </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="http://s6.cnzz.com/stat.php?id=1260781135&web_id=1260781135" type="text/javascript"></script>
+  </div>
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">SweetHouse</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">梦想对失败者是许可的，回忆只属于孤独的人</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                前端技术栈(Front-End-Develop)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-08-22T20:21:24+08:00" content="2017-08-22 20:21:24">
+              2017-08-22 20:21:24
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="基础篇"><a href="#基础篇" class="headerlink" title="基础篇"></a>基础篇</h2><h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h3><p>参考W3C标准，理解如何浏览和创建网页、基本的语法规范、常用标签及属性、网页之间的链接与跳转、标签节点层级节点；<br>DOM基本结构、节点对象的操作、事件特性及使用、常见的内置DOM对象、常见的BOM功能；<br>HTML5 语义化结构、多媒体 、本地存储(LocalStorage, SessionStorage, Cookie)、其他常见API、Canvas等。</p>
+<a id="more"></a>
+<h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><p>基本语法和三种书写位置、选择器和格式化排版、盒模型的高级用法、常用布局模型(两栏、三栏、垂直居中等)；<br>CSS3 选择器、CSS3 边框、背景、阴影、CSS3 过渡和动画、CSS3 伸缩布局；<br>移动端开发，响应式布局、编译CSS。</p>
+<h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><p>基础语法和变量、数据类型和数据类型转换、条件判断、循环语句、函数、数组等内置对象；<br>JS 语言的基本构成、变量、数据类型、表达式、选择结构、循环结构、短路语句、函数基础；<br>JQuery 选择器、基本操作API、动画API、事件API、插件机制、原理分析、项目实战；<br>AJAX 基本编程接口、异步数据交互、模板引擎的使用、跨域的实现方案、增量加载；<br>JSON 语法；<br>HTTP协议。</p>
+<h3 id="计算机知识储备"><a href="#计算机知识储备" class="headerlink" title="计算机知识储备"></a>计算机知识储备</h3><p>编译原理<br>计算机网络<br>操作系统<br>算法原理<br>软件工程/软件测试原理</p>
+<h3 id="PhotoShop-切图"><a href="#PhotoShop-切图" class="headerlink" title="PhotoShop 切图"></a>PhotoShop 切图</h3><p>PhotoShop 的安装和简单的切图，像素级精确还原设计稿。</p>
+<h3 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h3><p>JQuery、BootStrap</p>
+<h3 id="版本控制工具"><a href="#版本控制工具" class="headerlink" title="版本控制工具"></a>版本控制工具</h3><p>git<br>svn</p>
+<h3 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h3><p>Sublime Text、webstorm、Visual Studio Code、VIM、Chrome、Firefox<br>参考资料<br>w3school、Web 技术文档 | MDN、segmentfault、stackoverflow、CSS 语法参考、阮一峰的个人网站、菜鸟笔记、JavaScript 标准参考教程（alpha）</p>
+<h2 id="进阶篇"><a href="#进阶篇" class="headerlink" title="进阶篇"></a>进阶篇</h2><h3 id="JavaScript-1"><a href="#JavaScript-1" class="headerlink" title="JavaScript"></a>JavaScript</h3><p>JS 面向对象编程： 面向对象理论、对象的基本概念、对象的属性和方法、通过字面量创建对象；<br>JS 原型和原型链的理解和应用；<br>JS 闭包、立即执行函数、匿名函数；<br>ES 6 入门，参考阮一峰写的《ECMAScript 6入门》；<br>class、Promise、async/await；</p>
+<h3 id="CSS-1"><a href="#CSS-1" class="headerlink" title="CSS"></a>CSS</h3><p>css flex 布局<br>媒体查询、css3 响应式布局<br>css3 动画<br>css 3D<br>scss</p>
+<h3 id="可视化-富文本编辑器"><a href="#可视化-富文本编辑器" class="headerlink" title="可视化/富文本编辑器"></a>可视化/富文本编辑器</h3><p>SVG/Canvas/VML<br>D3 / HighChart.js / Echart.js<br>WebGL / three.js<br>ueditor / wangEditor</p>
+<h3 id="跨域-安全"><a href="#跨域-安全" class="headerlink" title="跨域/安全"></a>跨域/安全</h3><p>JSONP / iframe<br>CSRF/XSS<br>CSP<br>Same-origin policy</p>
+<h3 id="前端性能优化"><a href="#前端性能优化" class="headerlink" title="前端性能优化"></a>前端性能优化</h3><p>HTTP 请求/响应原理<br>前端优化的几种方式<br>浏览器缓存机制</p>
+<h3 id="框架-1"><a href="#框架-1" class="headerlink" title="框架"></a>框架</h3><p>Angular<br>React<br>Vue</p>
+<h3 id="微信小程序"><a href="#微信小程序" class="headerlink" title="微信小程序"></a>微信小程序</h3><p>了解</p>
+<h3 id="前后端分离"><a href="#前后端分离" class="headerlink" title="前后端分离"></a>前后端分离</h3><p>前端使用动态模板，后端只提供接口(参考单页面应用)<br>使用 Node 作为中间层(参考淘宝中途岛计划)</p>
+<h3 id="前端自动化工具"><a href="#前端自动化工具" class="headerlink" title="前端自动化工具"></a>前端自动化工具</h3><p>webpack<br>gulp<br>npm</p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p>ECMAScript 6 入门、Exploring-ES6翻译、Less教程、Sass中文文档、张鑫旭——前端性能、web前端性能优化进阶路、【高性能前端2】高性能CSS、【高性能前端1】高性能HTML、wangEditor、Gulp：任务自动管理工具 - ruanyifeng、Gulp 入门指南、Node.js 包教不包会、Vue-cli脚手架、Vue组件、vue自定义指令、Vue过渡动画、Vue指令、Vue api文档、angularjs API、angular 教程、angular 文档</p>
+<h2 id="高级篇"><a href="#高级篇" class="headerlink" title="高级篇"></a>高级篇</h2><h3 id="前端工作流"><a href="#前端工作流" class="headerlink" title="前端工作流"></a>前端工作流</h3><p>自动化流程工具使用<br>源代码版本控制工具使用(git, svn)<br>依赖项管理工具(npm, require)<br>项目模板脚手架(参考vue-cli)</p>
+<h3 id="模块化开发"><a href="#模块化开发" class="headerlink" title="模块化开发"></a>模块化开发</h3><p>模块化开发规范<br>ES6 模块化开发<br>模块化开发最佳实践</p>
+<h3 id="NodeJS"><a href="#NodeJS" class="headerlink" title="NodeJS"></a>NodeJS</h3><p>常用内置模块<br>高级特性<br>常用框架（express, koa…）</p>
+<h3 id="Web全平台应用"><a href="#Web全平台应用" class="headerlink" title="Web全平台应用"></a>Web全平台应用</h3><p>Web = Chrome + Angular.js + Ionic<br>Desktop = Electron + Angular.js + Ionic<br>Mobile = Cordova + Angular.js + Ionic<br>react Native</p>
+<h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><p>使用 Express + MongoDB 搭建多人博客、NodeJS的代码调试和性能调优、在 Node.js 应用中集成 Redis、electron、ionic中文指南、React Native 中文版、V8 Javascript 引擎设计理念、JavaScript V8 性能小贴士</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag">#前端</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/09/异步解决方案-async-await/" rel="next" title="异步解决方案 async/await">
+                <i class="fa fa-chevron-left"></i> 异步解决方案 async/await
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <!-- 评论 start 写死的 -->
+      <div id="hypercomments_widget"></div>
+      <script type="text/javascript">
+      _hcwp = window._hcwp || [];
+      _hcwp.push({widget:"Stream", widget_id: 92211});
+      (function() {
+      if("HC_LOAD_INIT" in window)return;
+      HC_LOAD_INIT = true;
+      var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
+      var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
+      hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/92211/"+lang+"/widget.js";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hcc, s.nextSibling);
+      })();
+      </script>
+      <a href="http://hypercomments.com" rel = "nofollow" class="hc-link" title="comments widget">comments powered by HyperComments</a>
+      <!-- 评论 end -->
+    
+  </div>
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/logo.png"
+               alt="panbr" />
+          <p class="site-author-name" itemprop="name">panbr</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础篇"><span class="nav-number">1.</span> <span class="nav-text">基础篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTML"><span class="nav-number">1.1.</span> <span class="nav-text">HTML</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS"><span class="nav-number">1.2.</span> <span class="nav-text">CSS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript"><span class="nav-number">1.3.</span> <span class="nav-text">JavaScript</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算机知识储备"><span class="nav-number">1.4.</span> <span class="nav-text">计算机知识储备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PhotoShop-切图"><span class="nav-number">1.5.</span> <span class="nav-text">PhotoShop 切图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#框架"><span class="nav-number">1.6.</span> <span class="nav-text">框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#版本控制工具"><span class="nav-number">1.7.</span> <span class="nav-text">版本控制工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工具"><span class="nav-number">1.8.</span> <span class="nav-text">工具</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进阶篇"><span class="nav-number">2.</span> <span class="nav-text">进阶篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript-1"><span class="nav-number">2.1.</span> <span class="nav-text">JavaScript</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS-1"><span class="nav-number">2.2.</span> <span class="nav-text">CSS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可视化-富文本编辑器"><span class="nav-number">2.3.</span> <span class="nav-text">可视化/富文本编辑器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#跨域-安全"><span class="nav-number">2.4.</span> <span class="nav-text">跨域/安全</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前端性能优化"><span class="nav-number">2.5.</span> <span class="nav-text">前端性能优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#框架-1"><span class="nav-number">2.6.</span> <span class="nav-text">框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#微信小程序"><span class="nav-number">2.7.</span> <span class="nav-text">微信小程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前后端分离"><span class="nav-number">2.8.</span> <span class="nav-text">前后端分离</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前端自动化工具"><span class="nav-number">2.9.</span> <span class="nav-text">前端自动化工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料"><span class="nav-number">2.10.</span> <span class="nav-text">参考资料</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高级篇"><span class="nav-number">3.</span> <span class="nav-text">高级篇</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#前端工作流"><span class="nav-number">3.1.</span> <span class="nav-text">前端工作流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模块化开发"><span class="nav-number">3.2.</span> <span class="nav-text">模块化开发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NodeJS"><span class="nav-number">3.3.</span> <span class="nav-text">NodeJS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Web全平台应用"><span class="nav-number">3.4.</span> <span class="nav-text">Web全平台应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考文档"><span class="nav-number">3.5.</span> <span class="nav-text">参考文档</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">panbr</span>
+</div>
+
+<div class="power">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>&nbsp;&nbsp;
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    Next
+  </a>&nbsp;&nbsp;
+  <!-- 站长统计 -->
+  <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260781135'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1260781135%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/canvas-nest/canvas-nest.js"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+  
+
+    
+
+   
+        <!-- UY BEGIN -->
+        <script type="text/javascript" src="//v2.uyan.cc/code/uyan.js?uid=2136454"></script>
+        <!-- UY END -->
+    
+  
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
