@@ -84,18 +84,20 @@
 
 
 
-<meta name="description" content="在那个还不算遥远的刀耕火种时代，Java Web 项目中的前端开发者写好页面模板，然后丢给后台哥们完事。这过程中后台开发人员需要写一些蹩脚的 js 交互代码，如果模板需要调整，还要求前端er在别人电脑上面修改。 这样不仅开发效率低，更主要的是，将我们前端开发人员置于何处，切图仔、网页制作？不想当厨子的士兵不是好司机，我们当然要自己主宰产品的展现，也要拒绝低效的工作环境，因此探索前后端分离的方案，从">
+<meta name="description" content="讨厌一门编程语言的理由可以有很多，但对于 Javascript 是个例外，因为实在是数不清。Javascript 爆发的太快了，这也意味着在成为标准之前，我们没有足够的时间去纠正一些错误。现在我们就聊聊它包含的一些稀奇古怪的问题。">
 <meta name="keywords" content="前端">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浅析前后端分离">
-<meta property="og:url" content="http://sweethouse.cn/2016/11/03/浅析前后端分离/index.html">
+<meta property="og:title" content="毁三观的Javascript">
+<meta property="og:url" content="http://sweethouse.cn/2017/11/06/毁三观的Javascript/index.html">
 <meta property="og:site_name" content="SweetHouse">
-<meta property="og:description" content="在那个还不算遥远的刀耕火种时代，Java Web 项目中的前端开发者写好页面模板，然后丢给后台哥们完事。这过程中后台开发人员需要写一些蹩脚的 js 交互代码，如果模板需要调整，还要求前端er在别人电脑上面修改。 这样不仅开发效率低，更主要的是，将我们前端开发人员置于何处，切图仔、网页制作？不想当厨子的士兵不是好司机，我们当然要自己主宰产品的展现，也要拒绝低效的工作环境，因此探索前后端分离的方案，从">
+<meta property="og:description" content="讨厌一门编程语言的理由可以有很多，但对于 Javascript 是个例外，因为实在是数不清。Javascript 爆发的太快了，这也意味着在成为标准之前，我们没有足够的时间去纠正一些错误。现在我们就聊聊它包含的一些稀奇古怪的问题。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-06T07:17:26.632Z">
+<meta property="og:image" content="http://www.devsanon.com/wp-content/uploads/2017/09/javascript-300x179.jpg">
+<meta property="og:updated_time" content="2017-11-06T09:37:37.751Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="浅析前后端分离">
-<meta name="twitter:description" content="在那个还不算遥远的刀耕火种时代，Java Web 项目中的前端开发者写好页面模板，然后丢给后台哥们完事。这过程中后台开发人员需要写一些蹩脚的 js 交互代码，如果模板需要调整，还要求前端er在别人电脑上面修改。 这样不仅开发效率低，更主要的是，将我们前端开发人员置于何处，切图仔、网页制作？不想当厨子的士兵不是好司机，我们当然要自己主宰产品的展现，也要拒绝低效的工作环境，因此探索前后端分离的方案，从">
+<meta name="twitter:title" content="毁三观的Javascript">
+<meta name="twitter:description" content="讨厌一门编程语言的理由可以有很多，但对于 Javascript 是个例外，因为实在是数不清。Javascript 爆发的太快了，这也意味着在成为标准之前，我们没有足够的时间去纠正一些错误。现在我们就聊聊它包含的一些稀奇古怪的问题。">
+<meta name="twitter:image" content="http://www.devsanon.com/wp-content/uploads/2017/09/javascript-300x179.jpg">
 
 
 
@@ -113,7 +115,7 @@
   };
 </script>
 
-  <title> 浅析前后端分离 | SweetHouse </title>
+  <title> 毁三观的Javascript | SweetHouse </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -229,7 +231,7 @@
             
             
               
-                浅析前后端分离
+                毁三观的Javascript
               
             
           </h1>
@@ -241,8 +243,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-03T22:02:45+08:00" content="2016-11-03 22:02:45">
-              2016-11-03 22:02:45
+            <time itemprop="dateCreated" datetime="2017-11-06T15:18:37+08:00" content="2017-11-06 15:18:37">
+              2017-11-06 15:18:37
             </time>
           </span>
 
@@ -269,19 +271,62 @@
       
 
       
-        <p>在那个还不算遥远的刀耕火种时代，Java Web 项目中的前端开发者写好页面模板，然后丢给后台哥们完事。这过程中后台开发人员需要写一些蹩脚的 js 交互代码，如果模板需要调整，还要求前端er在别人电脑上面修改。 这样不仅开发效率低，更主要的是，将我们前端开发人员置于何处，切图仔、网页制作？不想当厨子的士兵不是好司机，我们当然要自己主宰产品的展现，也要拒绝低效的工作环境，因此探索前后端分离的方案，从来就没有停止过。</p>
+        <p><img src="http://www.devsanon.com/wp-content/uploads/2017/09/javascript-300x179.jpg" alt=""><br>讨厌一门编程语言的理由可以有很多，但对于 Javascript 是个例外，因为实在是数不清。Javascript 爆发的太快了，这也意味着在成为标准之前，我们没有足够的时间去纠正一些错误。现在我们就聊聊它包含的一些稀奇古怪的问题。</p>
 <a id="more"></a>
-<p>之所以说没有停止，一方面为了赞扬广大一线 WEB 开发者勇于探索的精神(呵呵)，另一方面也是因为现有的解决方案还有待完善。目前来说比较流行的前后端分离的解决方案有两种：</p>
-<blockquote>
-<p><strong> 1. 前端使用动态模板，后端只提供接口 </strong></p>
-</blockquote>
-<p>这种方案主要针对包含大量交互功能的应用类系统，比如后台管理。前端采用 MV* (angular, react) 框架，或者直接简单粗暴使用 ajax ，利用模板引擎完成完整的页面效果，后台根据事先的数据交互约定，提供相应的 RESTful 接口。项目前期，前后端分别独立开发，数据联调阶段，前端可以使用 Nginx 反向代理（现在特别流行的 webpack 已经内置了该功能），静态请求由 Nginx 处理，动态的请求转发给后端服务。</p>
-<p>这种方式也有一些缺点，MV* 框架由于需要在前端渲染模板，这对于 SEO 来说简直是灾难；angular, react 需要更高级的浏览器(IE9 +)支持，这并不能满足所有用户的需求；angular, react 多数采用单页面形式，除了首屏加载慢以外，某些模块的加载失败甚至可能影响整个系统的功能。</p>
-<blockquote>
-<p><strong> 2. 使用 Node 作为中间层 </strong></p>
-</blockquote>
-<p>对于内容展现类应用，注重浏览效果和交互体验，可以采用这种方案。在前端和后台之间加入 Node 中间层，此时浏览器负责 CSS 渲染和 DOM 操作，Node 层进行数据请求、路由和页面渲染等任务，服务器提供数据接口。这种方式一定程度上增加了前端开发人员的工作量，也对其能力提出更高的要求，因为 Node 层也需要他们来编写。具体实现可以参考淘宝的”中途岛”项目。</p>
-<p>除了上述的两种方案，这两年出现了前后端通吃的”全栈工程师”这样的高端工种，分分钟鄙视掉前端后台，分离神马的问题也就不存在了。还有一点也想提一下，那就是 node.js 的出现使得前端er成功插足后台领域，node + mongodb + ejs 这样的组合照样可以撸出一套完整的系统。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&apos;5&apos; - 3 // 2</div></pre></td></tr></table></figure>
+<p>上面的例子，用字符串 ‘5’ 减去 3 ，Javascript 的弱类型和隐式转换使结果输出为 2。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&apos;5&apos; + 3 // 53</div></pre></td></tr></table></figure>
+<p>这是什么鬼，为什么会得到53？好吧，这种情况下，3 被转化成了字符串，接着进行了字符串的拼接。所以就是说第一种情况将字符串 ‘5’ 转化成了数字 5，第二种情况将数字 3 转化成了字符串 ‘3’。</p>
+<p>再看看下面这个。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&apos;5&apos; - &apos;3&apos; // 2</div></pre></td></tr></table></figure>
+<p>这里的字符串都被转化成了数字。为啥，是不是一脸懵逼，Javascript 就是这么神奇。</p>
+<p>试试其他的…</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&apos;5&apos; + + &apos;4&apos; // 54</div></pre></td></tr></table></figure>
+<p>++ 运算符并没有改变什么，最后仍然得到了字符串的拼接。So…我们试试两个字符串相加。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&apos;foo&apos; ++ &apos;bar&apos; // fooNaN</div></pre></td></tr></table></figure>
+<p>等等，让我缓缓…前一种情况成立第二种就不成立了？没错，因为第一种情况下，4 先是被转化成了数字，然后为了跟 5 拼接，又被转化成了字符串。因为有如下的结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">+ &apos;4&apos; // 4</div></pre></td></tr></table></figure>
+<p>所以，当我们用两个字符串做同样的运算时，Javascript 试图将包含 bar 的字符串转换为一个整数，导致 NaN，然后​​将NaN转换为一个字符串。有没有很神奇？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&apos;5&apos; + -&apos;4&apos; // 5-4</div></pre></td></tr></table></figure>
+<p>嗯… ‘-4’ 被转化成了 -4，随后又被转化成了 ‘-4’，这有意义吗？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var x = 3 // undefined</div><div class="line">&apos;5&apos; -x + x // 5</div><div class="line">&apos;5&apos; + x -x // 50</div></pre></td></tr></table></figure>
+<p>这又是怎么搞得？简直是数学杀手啊。</p>
+<p>咱们再看看其它的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">typeof NaN // number</div><div class="line">NaN == NaN // false</div></pre></td></tr></table></figure>
+<p>所以说非数值NaN是一个数字？它又不等于自己？好吧，看看其它的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">x = [0] // [0]</div><div class="line">x == x // true</div></pre></td></tr></table></figure>
+<p>呃…一个只有一个值的数组将等于它自己。继续上面的例子，让我们试试这个</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">x == !x</div></pre></td></tr></table></figure>
+<p>这… x 等于自己，也不等于自己？</p>
+<p>好吧，那么下面呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Array(3) == &apos;,,&apos; // true</div></pre></td></tr></table></figure>
+<p>不错，好，棒极了…</p>
+<p>看下 null 怎么样？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">typeof null // object</div></pre></td></tr></table></figure>
+<p>好吧，这也就意味着</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">null instanceof Object // false</div></pre></td></tr></table></figure>
+<p>什么鬼… typeof null是object，但是null不是Object的一个实例？好吧，字符串应该可以吧。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&quot;string&quot; instanceof String // false</div></pre></td></tr></table></figure>
+<p>false…</p>
+<p>再试下 min 和 max 的值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Math.max() &gt; Math.min() // false</div><div class="line">Math.max() &lt; Math.min() // true</div></pre></td></tr></table></figure>
+<p>呃…所以说数学上的最大值小于数学上的最小值？算你狠。</p>
+<p>接下来再看看布尔值，先做如下判断：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">true == false // false</div><div class="line">false == false // true</div><div class="line">true == true // true</div></pre></td></tr></table></figure>
+<p>这没问题，试试其它操作。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">true &amp;&amp; false // false</div><div class="line">true &amp;&amp; true // true</div><div class="line">true &amp;&amp; NaN // NaN</div></pre></td></tr></table></figure>
+<p>啊… true &amp;&amp; NaN 结果变成 NaN 了？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">false &amp;&amp; NaN // false</div></pre></td></tr></table></figure>
+<p>你不喜欢Javascript的一致性吗？我当然喜欢…</p>
+<p>咱再尝试点奇怪的事情。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">true + true === 2 // true</div><div class="line">true - true === 0 // true</div></pre></td></tr></table></figure>
+<p>从这里来看我可以认为 true 等于1吧？我们来检查一下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">true === 1 // false</div></pre></td></tr></table></figure>
+<p>你怎么敢对这样的语言进行假设，它唯一一致的就是它的不一致性？</p>
+<p>好吧，今天就到这吧。但是，这绝对不是JavaScript中唯一奇怪的东西。有太多奇奇怪怪的东西了，今天实在不想搞了，估计以后再来个第二波吧。</p>
+<p>作业作业，你试试下面表达式的结果，不要运行哦。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(!+[]+[]+![])</div></pre></td></tr></table></figure>
+<p>—— 本文翻译自<a href="http://www.devsanon.com/rants/stupid-javascript/" target="_blank" rel="external">http://www.devsanon.com/rants/stupid-javascript/</a></p>
 
       
     </div>
@@ -312,17 +357,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/10/23/厦门印象/" rel="next" title="厦门印象">
-                <i class="fa fa-chevron-left"></i> 厦门印象
+              <a href="/2017/08/22/前端技术栈-Front-End-Develop/" rel="next" title="前端技术栈(Front-End-Develop)">
+                <i class="fa fa-chevron-left"></i> 前端技术栈(Front-End-Develop)
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/11/09/vue-2-0-loading-组件/" rel="prev" title="vue-2.0 loading 组件">
-                vue-2.0 loading 组件 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
