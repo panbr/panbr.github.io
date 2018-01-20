@@ -70,6 +70,6 @@ theme: next
 deploy:
   type: git
   repo: 
-    coding: git@git.coding.net:panbr/panbr.git
+    coding: https://git.coding.net/panbr/panbr.git
     github: https://github.com/panbr/panbr.github.io
   branch: master
